@@ -49,20 +49,22 @@ The system is implemented step-by-step using **Whisper, embeddings, vector simil
 
 ## 📂 Project Structure
 
-├── step1_video_to_mp3.py # Convert videos to audio
-├── step2_mp3_to_json.py # Whisper transcription + chunking
-├── step3_process_incoming.py # Embedding creation
-├── step4_code.py # CLI-based Q&A
-├── step6_app.py # Streamlit RAG application
+.
+├── step1_video_to_mp3.py          # Video → Audio  
+├── step2_mp3_to_json.py           # Audio → Transcription  
+├── step3_preprocess_json.py       # Chunking with timestamps  
+├── step4_code.py                  # Embedding generation  
+├── step5_process_incoming.py      # Query processing  
+├── step6_app.py                   # Streamlit application  
 │
-├── audios/ # Generated audio files (ignored)
-├── jsons/ # Generated transcript chunks (ignored)
-├── embeddings.joblib # Vector store (ignored)
-│
-├── prompt.txt
-├── response.txt
-├── requirements.txt
-└── Readme.md
+├── audios/                        # Extracted audio files  
+├── jsons/                         # Transcript & embedding JSONs  
+├── whisper/                       # Whisper outputs  
+├── embeddings.joblib              # Vector store (ignored)  
+├── prompt.txt                     # LLM prompt  
+└── response.txt                   # Model response  
+
+---
 
 
 ## ✨ Key Highlights
