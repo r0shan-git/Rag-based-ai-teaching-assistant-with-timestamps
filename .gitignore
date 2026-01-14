@@ -1,0 +1,14 @@
+# Ignore media folders
+video/
+audios/
+whisper/
+
+# Ignore virtual / conda environments
+base/
+bookenv/
+ml/
+rgenv/
+
+# Ignore generated files
+embeddings.joblib
+response.txt
