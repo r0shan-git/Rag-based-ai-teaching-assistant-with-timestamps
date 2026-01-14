@@ -106,58 +106,34 @@ Answer:
 - Local LLM via Ollama for privacy & cost efficiency
 - Strict prompt to avoid hallucinations
 
-## Architecture Flow (Step-by-Step)
-┌─────────────┐
-│   Video     │
-│  Files (.mp4)
-└──────┬──────┘
-       │
-       ▼
-┌──────────────────────┐
-│ Step 1: Video → Audio│
-│ (MP4 → MP3)          │
-└──────┬───────────────┘
-       │
-       ▼
-┌────────────────────────────┐
-│ Step 2: Speech-to-Text     │
-│ (Whisper Transcription)    │
-│ + Timestamps               │
-└──────┬─────────────────────┘
-       │
-       ▼
-┌────────────────────────────┐
-│ Step 3: Text Preprocessing │
-│ - Cleaning                 │
-│ - Chunking                 │
-└──────┬─────────────────────┘
-       │
-       ▼
-┌────────────────────────────┐
-│ Step 4: Embedding Creation │
-│ (Sentence Embeddings)      │
-└──────┬─────────────────────┘
-       │
-       ▼
-┌────────────────────────────┐
-│ Vector Store (FAISS)       │
-│ - Embeddings + Metadata    │
-│ - Timestamps               │
-└──────┬─────────────────────┘
-       │
-       ▼
-┌────────────────────────────┐
-│ Step 5: User Query         │
-│ → Query Embedding          │
-│ → Similarity Search        │
-└──────┬─────────────────────┘
-       │
-       ▼
-┌────────────────────────────┐
-│ Step 6: Result Generation  │
-│ - Best Matching Segment    │
-│ - Exact Timestamp          │
-└────────────────────────────┘
+## 🔄 Pipeline
+
+1. 🎥 **Video Ingestion**  
+   Input course videos are collected for processing.
+
+2. 🎧 **Audio Extraction**  
+   Videos are converted into audio files (MP4 → MP3).
+
+3. 📝 **Speech-to-Text**  
+   Audio is transcribed using Whisper with timestamps.
+
+4. ✂️ **Text Chunking**  
+   Transcripts are split into meaningful chunks while preserving start and end times.
+
+5. 🧩 **Embedding Generation**  
+   Each text chunk is converted into semantic embeddings.
+
+6. 📦 **Vector Storage**  
+   Embeddings along with metadata are stored for fast retrieval.
+
+7. 🔍 **Query Processing**  
+   User query is embedded and compared using similarity search.
+
+8. ⏱️ **Timestamp Retrieval**  
+   Most relevant video segment with exact timestamp is identified.
+
+9. 🌐 **User Interface**  
+   Streamlit app displays the answer and navigates to the correct video time.
 
 
 ## 🚀 Future Improvements
